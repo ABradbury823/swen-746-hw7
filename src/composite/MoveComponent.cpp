@@ -1,7 +1,5 @@
 #include "MoveComponent.h"
 
-#include <iostream>
-
 MoveComponent::MoveComponent(float moveSpeed) :
 mMoveSpeed(moveSpeed), mPosition(Vector()), mMoveDir(Vector::RightVector) {
   
@@ -13,7 +11,7 @@ MoveComponent::~MoveComponent() {
 
 void MoveComponent::move(Vector newPos) {
   mPosition = newPos;
-  std::cout << "New position: " << mPosition.toString() << std::endl;
+  std::cout << "  New position: " << mPosition.toString() << std::endl;
 }
 
 void MoveComponent::init() {

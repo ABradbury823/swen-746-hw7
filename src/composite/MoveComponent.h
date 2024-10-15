@@ -16,6 +16,9 @@ class MoveComponent : public Component {
     /// @brief Retrieve movement speed.
     /// @return Movement speed, in units per second.
     inline float getMoveSpeed() const { return mMoveSpeed; }
+    /// @brief Retrieve current position.
+    
+    /// @return Current world position.
     inline Vector getPosition() const { return mPosition; }
 
     void move(Vector newPos);

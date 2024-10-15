@@ -1,8 +1,8 @@
 #pragma once
 
-#include "IComponent.h"
+#include "Component.h"
 
-class HealthComponent : public IComponent {
+class HealthComponent : public Component {
 private:
   float mHealth;
   float mMaxHealth;
@@ -20,6 +20,6 @@ public:
   void die();                         // health <= 0
 
   void init() override;                             // runs once at start
-  void execute() override;                          // runs every frame
+  void execute(float deltaTime) override;           // runs every frame
   ComponentType getComponentType() const override;  // gets type = Health
 };

@@ -19,7 +19,7 @@ void MoveComponent::init() {
   std::cout << "Running Move Component's init..." << std::endl;
 }
 
-void MoveComponent::execute() {
+void MoveComponent::execute(float deltaTime) {
   std::cout << "Running Move Component's execute..." << std::endl;
 }
 

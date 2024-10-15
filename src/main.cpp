@@ -12,10 +12,10 @@ int main()
   std::cout << "Hello C++ World from VS Code!" << std::endl;
 
   // make a game object
-  GameObject go1 = GameObject();
+  GameObject go1;
 
   // testing game object
-  GameObject go2 = GameObject();
+  GameObject go2;
   go1.add(&go2);
   go1.remove(&go2);
 
@@ -30,12 +30,12 @@ int main()
   MoveComponent* move = new MoveComponent(5);
 
   go1.add(move);
-  //go2.add(move);  // segmentation fault on delete
+  go2.add(move);  // segmentation fault on delete
 
   // run methods
   go1.init();
   std::cout << "Health: " << health->getHealth() << std::endl;
-  go1.execute();
+  go1.execute(0.5f);
 
   return 0;
 }

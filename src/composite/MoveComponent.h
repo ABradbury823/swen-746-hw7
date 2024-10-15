@@ -1,8 +1,8 @@
 #pragma once
 
-#include "IComponent.h"
+#include "Component.h"
 
-class MoveComponent : public IComponent {
+class MoveComponent : public Component {
   private:
     float mMoveSpeed;
 
@@ -16,7 +16,7 @@ class MoveComponent : public IComponent {
 
     void move(float deltaTime);
 
-    void init() override;
-    void execute() override;
-    ComponentType getComponentType() const override;
+    void init() override;                             // runs once at start
+    void execute(float deltaTime) override;           // runs every frame
+    ComponentType getComponentType() const override;  // gets type = Move
 };

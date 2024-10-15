@@ -40,7 +40,7 @@ void HealthComponent::init() {
   mHealth = mMaxHealth;
 }
 
-void HealthComponent::execute() {
+void HealthComponent::execute(float deltaTime) {
   std::cout << "Running Health Component's execute..." << std::endl;
 }
 

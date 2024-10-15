@@ -3,18 +3,9 @@
 #include <iostream>
 #include <algorithm>
 
-GameObject::GameObject() : mComponents() {
-  
-}
-
 GameObject::~GameObject() {
-  // delete dynamically allocated components
-  for(IComponent* c : mComponents){
-    if(c == nullptr) continue;
-
-    delete c;
-    c = nullptr;
-  }
+  // in case I forget
+  tearDown();
 }
 
 /// @brief Add a component to this GameObject.
@@ -38,6 +29,7 @@ void GameObject::add(IComponent* c) {
   }
 
   mComponents.push_back(c);
+  c->getAccess()->addRef();
 }
 
 /// @brief Remove a component from this GameObject.
@@ -50,6 +42,7 @@ void GameObject::remove(IComponent* c) {
   if(it != mComponents.end()) {
     // erase from new end to actual end
     mComponents.erase(it, mComponents.end());
+    c->getAccess()->release();
   }
   else {
     std::cout << "remove: Could not find the component to remove" << std::endl;
@@ -85,14 +78,26 @@ void GameObject::init()
 }
 
 /// @brief Function that runs every frame.
-void GameObject::execute() {
+void GameObject::execute(float deltaTime) {
   std::cout << "Running GameObject's execute..." << std::endl;
 
   for(IComponent* c : mComponents) {
     if(c) {
-      c->execute();
+      c->execute(deltaTime);
     }
   }
+}
+
+/// @brief Function that runs once at the end of the GameObject's life.
+void GameObject::tearDown() {
+  // delete dynamically allocated components
+  for(IComponent* c : mComponents){
+    if(c) {
+      c->tearDown();
+      c->getAccess()->release();
+    }
+  }
+  mComponents.clear();
 }
 
 /// @brief Retrieves this component's type.

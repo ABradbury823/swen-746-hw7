@@ -1,27 +1,22 @@
-#include "IComponent.h"
+#pragma once
 
 #include <vector>
 
-class GameObject : IComponent
+#include "IComponent.h"
+
+class GameObject : public IComponent
 {
 private:
-  std::vector<IComponent> mComponents;
+  std::vector<IComponent*> mComponents;
 public:
   GameObject();   // ctor
   ~GameObject();  // dtor
 
-  void add(IComponent& c);    // add component
-  void remove(IComponent& c); // remove component
-  inline std::vector<IComponent> getComponents() {return mComponents;}
+  void add(IComponent* c);    // add component
+  void remove(IComponent* c); // remove component
+  inline std::vector<IComponent*> getComponents() const { return mComponents; }
 
-  void init() override;     // runs on start
-  void execute() override;  // runs every frame
+  virtual void init() override;     // runs on start
+  virtual void execute() override;  // runs every frame
+  virtual ComponentType getComponentType() const override;
 };
-
-GameObject::GameObject(/* args */)
-{
-}
-
-GameObject::~GameObject()
-{
-}

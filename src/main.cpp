@@ -28,6 +28,7 @@ int main()
 
   // new move component, components can only belong to one GameObject
   MoveComponent* move = new MoveComponent(5);
+  std::cout << "Position: " << move->getPosition().toString() << std::endl;
 
   go1.add(move);
   go2.add(move);  // segmentation fault on delete
@@ -35,7 +36,10 @@ int main()
   // run methods
   go1.init();
   std::cout << "Health: " << health->getHealth() << std::endl;
-  go1.execute(0.5f);
+
+  for(int i = 0; i < 10; i++){
+    go1.execute(0.1f);
+  }
 
   return 0;
 }

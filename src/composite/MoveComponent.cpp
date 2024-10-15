@@ -3,16 +3,17 @@
 #include <iostream>
 
 MoveComponent::MoveComponent(float moveSpeed) :
-mMoveSpeed(moveSpeed) {
-
+mMoveSpeed(moveSpeed), mPosition(Vector()), mMoveDir(Vector::RightVector) {
+  
 }
 
 MoveComponent::~MoveComponent() {
 
 }
 
-void MoveComponent::move(float deltaTime) {
-  std::cout << "The GameObject moves to a new position!" << std::endl;
+void MoveComponent::move(Vector newPos) {
+  mPosition = newPos;
+  std::cout << "New position: " << mPosition.toString() << std::endl;
 }
 
 void MoveComponent::init() {
@@ -21,6 +22,8 @@ void MoveComponent::init() {
 
 void MoveComponent::execute(float deltaTime) {
   std::cout << "Running Move Component's execute..." << std::endl;
+  Vector newPos = mPosition + (mMoveDir * mMoveSpeed * deltaTime);
+  move(newPos);
 }
 
 IComponent::ComponentType MoveComponent::getComponentType() const {

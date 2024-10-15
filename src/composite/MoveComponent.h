@@ -1,10 +1,13 @@
 #pragma once
 
 #include "Component.h"
+#include "../Vector.h"
 
 class MoveComponent : public Component {
   private:
     float mMoveSpeed;
+    Vector mPosition;
+    Vector mMoveDir;
 
   public:
     MoveComponent(float moveSpeed); // ctor
@@ -13,8 +16,9 @@ class MoveComponent : public Component {
     /// @brief Retrieve movement speed.
     /// @return Movement speed, in units per second.
     inline float getMoveSpeed() const { return mMoveSpeed; }
+    inline Vector getPosition() const { return mPosition; }
 
-    void move(float deltaTime);
+    void move(Vector newPos);
 
     void init() override;                             // runs once at start
     void execute(float deltaTime) override;           // runs every frame

@@ -2,6 +2,7 @@
 
 #include "composite/GameObject.h"
 #include "composite/HealthComponent.h"
+#include "composite/MoveComponent.h"
 
 
 int main()
@@ -24,6 +25,12 @@ int main()
 
   go1.add(health);
   go1.add(health);
+
+  // new move component, components can only belong to one GameObject
+  MoveComponent* move = new MoveComponent(5);
+
+  go1.add(move);
+  //go2.add(move);  // segmentation fault on delete
 
   // run methods
   go1.init();

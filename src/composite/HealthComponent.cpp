@@ -44,7 +44,6 @@ void HealthComponent::execute() {
   std::cout << "Running Health Component's execute..." << std::endl;
 }
 
-IComponent::ComponentType HealthComponent::getComponentType() const
-{
+IComponent::ComponentType HealthComponent::getComponentType() const {
   return ComponentType::Health;
 }

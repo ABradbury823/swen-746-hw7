@@ -5,7 +5,7 @@ protected:
   enum class ComponentType {
     GameObject,
     Health,
-    Movement,
+    Move,
     Attack
   };
 

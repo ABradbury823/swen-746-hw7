@@ -10,6 +10,7 @@
         "${workspaceFolder}\\src\\main.cpp",
         "${workspaceFolder}\\src\\composite\\GameObject.cpp",
         "${workspaceFolder}\\src\\composite\\HealthComponent.cpp",
+        "${workspaceFolder}\\src\\composite\\MoveComponent.cpp",
         "-o",
         "${workspaceFolder}\\src\\hw7.exe"
       ],

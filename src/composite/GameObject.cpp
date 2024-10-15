@@ -10,6 +10,8 @@ GameObject::GameObject() : mComponents() {
 GameObject::~GameObject() {
   // delete dynamically allocated components
   for(IComponent* c : mComponents){
+    if(c == nullptr) continue;
+
     delete c;
     c = nullptr;
   }

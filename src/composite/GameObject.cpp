@@ -4,7 +4,7 @@
 #include <algorithm>
 
 GameObject::~GameObject() {
-  // in case I forget
+  // in case I forget to call teardown explicitly
   tearDown();
 }
 

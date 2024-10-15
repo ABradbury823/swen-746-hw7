@@ -17,11 +17,11 @@ class MoveComponent : public Component {
     /// @return Movement speed, in units per second.
     inline float getMoveSpeed() const { return mMoveSpeed; }
     /// @brief Retrieve current position.
-    
+
     /// @return Current world position.
     inline Vector getPosition() const { return mPosition; }
 
-    void move(Vector newPos);
+    void move(Vector newPos);   // move to new position
 
     void init() override;                             // runs once at start
     void execute(float deltaTime) override;           // runs every frame

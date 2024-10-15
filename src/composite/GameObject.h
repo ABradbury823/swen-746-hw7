@@ -15,8 +15,8 @@ public:
   void add(IComponent* c);    // add component
   void remove(IComponent* c); // remove component
   inline std::vector<IComponent*> getComponents() const { return mComponents; }
-  IComponent* getComponentByType(ComponentType type) const;
-  IComponentAccess* getAccess() override { return nullptr; };
+  IComponent* getComponentByType(ComponentType type) const;   // Return = GameObject
+  IComponentAccess* getAccess() override { return nullptr; }; // no access on GameObjects
 
   virtual void init() override;     // runs on start
   virtual void execute(float deltaTime) override;  // runs every frame

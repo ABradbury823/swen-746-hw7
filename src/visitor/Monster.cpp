@@ -15,13 +15,13 @@ Monster::~Monster() {
 }
 
 void Monster::init() {
-  std::cout << "Running Monster's init..." << std::endl;
   GameObject::init();
+  std::cout << "Running Monster's init..." << std::endl;
 }
 
 void Monster::execute(float deltaTime) {
-  std::cout << "Running Monster's execute..." << std::endl;
   GameObject::execute(deltaTime);
+  std::cout << "Running Monster's execute..." << std::endl;
 }
 
 void Monster::tearDown() {

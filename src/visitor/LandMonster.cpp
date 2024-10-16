@@ -31,13 +31,15 @@ void LandMonster::endSprint() {
 }
 
 void LandMonster::init() {
-  std::cout << "Running Land Monster's init..." << std::endl;
   Monster::init();
+  std::cout << "Running Land Monster's init..." << std::endl;
+
+  endSprint();
 }
 
 void LandMonster::execute(float deltaTime) {
-  std::cout << "Running Land Monster's execute..." << std::endl;
   Monster::execute(deltaTime);
+  std::cout << "Running Land Monster's execute..." << std::endl;
 
   if(mIsSprinting) {
     if(mSprintTimer < mSprintDuration) {

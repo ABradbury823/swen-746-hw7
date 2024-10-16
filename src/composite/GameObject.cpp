@@ -102,7 +102,6 @@ void GameObject::tearDown() {
 
 /// @brief Retrieves this component's type.
 /// @return The component's type.
-IComponent::ComponentType GameObject::getComponentType() const
-{
+IComponent::ComponentType GameObject::getComponentType() const {
   return ComponentType::GameObject;
 }

@@ -4,7 +4,7 @@
 #include "../composite/HealthComponent.h"
 #include "../composite/MoveComponent.h"
 #include "../composite/AttackComponent.h"
-#include "Visitor.h"
+#include "IVisitor.h"
 
 class Monster : public GameObject {
 private:
@@ -23,9 +23,9 @@ public:
   // get attack component
   virtual inline AttackComponent* getAttackComponent() const final { return mAttackComponent; }
 
-  virtual void accept(Visitor v) = 0;
+  virtual void accept(IVisitor* v) = 0;
 
-  void init() override;                   // runs once at start
-  void execute(float deltaTime) override; // runs every frame
-  void tearDown() override;               // runs once at end
+  virtual void init() override;                   // runs once at start
+  virtual void execute(float deltaTime) override; // runs every frame
+  virtual void tearDown() override;               // runs once at end
 };

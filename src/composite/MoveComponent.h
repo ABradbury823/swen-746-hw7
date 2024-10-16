@@ -6,6 +6,7 @@
 class MoveComponent : public Component {
   private:
     float mMoveSpeed;
+    float mMoveSpeedMultiplier;
     Vector mPosition;
     Vector mMoveDir;
 
@@ -16,8 +17,14 @@ class MoveComponent : public Component {
     /// @brief Retrieve movement speed.
     /// @return Movement speed, in units per second.
     inline float getMoveSpeed() const { return mMoveSpeed; }
-    /// @brief Retrieve current position.
 
+    /// @brief Retrieve movement speed multiplier.
+    /// @return Modifier to the movement speed each frame.
+    inline float getMoveSpeedMult() const { return mMoveSpeedMultiplier; }
+    
+    void setMoveSpeedMult(float speedMult); // set move speed multiplier
+
+    /// @brief Retrieve current position.
     /// @return Current world position.
     inline Vector getPosition() const { return mPosition; }
 

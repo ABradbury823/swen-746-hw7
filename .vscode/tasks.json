@@ -10,6 +10,7 @@
         "${workspaceFolder}\\src\\main.cpp",
         "${workspaceFolder}\\src\\Vector.cpp",
         "${workspaceFolder}\\src\\visitor\\Monster.cpp",
+        "${workspaceFolder}\\src\\visitor\\LandMonster.cpp",
         "${workspaceFolder}\\src\\composite\\GameObject.cpp",
         "${workspaceFolder}\\src\\composite\\HealthComponent.cpp",
         "${workspaceFolder}\\src\\composite\\MoveComponent.cpp",

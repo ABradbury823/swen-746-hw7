@@ -2,7 +2,7 @@
 #include "composite/HealthComponent.h"
 #include "composite/MoveComponent.h"
 #include "composite/AttackComponent.h"
-#include "visitor/Monster.h"
+#include "visitor/LandMonster.h"
 
 
 int main()
@@ -12,7 +12,7 @@ int main()
   std::cout << "Hello C++ World from VS Code!" << std::endl;
 
   // make a monster
-  Monster monster1;
+  LandMonster monster1 = LandMonster(2.0f);
 
   // testing game object
   GameObject go2;
@@ -47,8 +47,10 @@ int main()
 
   std::cout << "\n=== Starting execute loop ===\n" << std::endl;
 
-  for(int i = 0; i < 10; i++){
+  for(int i = 0; i < 10; i++) {
+    std::cout << "- Frame " << (i + 1) << " -" << std::endl;
     monster1.execute(0.1f);
+    std::cout << std::endl;
   }
 
   return 0;

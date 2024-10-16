@@ -1,6 +1,6 @@
 #pragma once
 
-class Visitor {
+class IVisitor {
 public:
   virtual void visitLandMonster() = 0;
   virtual void visitAirMonster() = 0;

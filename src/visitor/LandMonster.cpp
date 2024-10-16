@@ -10,8 +10,8 @@ LandMonster::~LandMonster() {
 
 }
 
-void LandMonster::accept(IVisitor* v) {
-  v->visitLandMonster(this);
+void LandMonster::accept(IVisitor& v) {
+  v.visitLandMonster(*this);
 }
 
 void LandMonster::sprint() {

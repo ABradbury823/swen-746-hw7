@@ -14,7 +14,7 @@ public:
   AirMonster(float flightTime, float roostTime);
   ~AirMonster();
 
-  void accept(IVisitor* v);
+  void accept(IVisitor& v) override;
 
   void fly();
 

@@ -15,7 +15,7 @@ public:
   LandMonster(float sprintMult);
   ~LandMonster();
 
-  void accept(IVisitor* v) override;
+  void accept(IVisitor& v) override;
 
   void sprint();
   void endSprint();

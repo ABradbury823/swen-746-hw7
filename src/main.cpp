@@ -13,32 +13,29 @@ int main()
   std::cout << std::endl;
   std::cout << "Welcome to the Monster Test!" << std::endl;
 
+  std::cout << "\n### Composite Pattern Test ###" << std::endl;
+
   // make a monster
   AirMonster airMonster = AirMonster(0.5f, 0.5f);
   LandMonster landMonster = LandMonster(2.0f);
 
-  // make the visitor
-  EvolutionVisitor evoVisitor = EvolutionVisitor();
-
-  airMonster.accept(&evoVisitor);
-  landMonster.accept(&evoVisitor);
-
   // testing duplicate game object
+  std::cout << "\nTrying to add/remove a GameObject to an Air Monster..." << std::endl;
   GameObject go2;
   airMonster.add(&go2);
   airMonster.remove(&go2);
 
   // duplicate health component
   HealthComponent* health = new HealthComponent(10.0);
-  std::cout << "Health: " << airMonster.getHealthComponent()->getHealth() << std::endl;
 
+  std::cout << "\nTrying to add an extra Health Component to an Air Monster..." << std::endl;
   airMonster.add(health);
   airMonster.add(health);
 
-  // new move component, components can only belong to one GameObject
+  // duplicate movement object
   MoveComponent* move = new MoveComponent(5.0f);
-  std::cout << "Position: " << move->getPosition().toString() << std::endl;
 
+  std::cout << "\nTrying to add an extra Move Component to an Air Monster..." << std::endl;
   airMonster.add(move);
   go2.add(move);  // no segmentation fault on delete
 
@@ -47,14 +44,25 @@ int main()
 
   airMonster.add(attack);
   
+  std::cout << "\nAdding an Attack Component to a GameObject twice, then removing it..." << std::endl;
   go2.add(attack);
   go2.add(attack);
   go2.remove(attack);
 
   // run methods
+  std::cout << "\nInitializing an Air Monster and a Land Monster..." << std::endl;
   airMonster.init();
+  std::cout << std::endl;
   landMonster.init();
-  std::cout << "Health: " << airMonster.getHealthComponent()->getHealth() << std::endl;
+
+  std::cout << "\n### Visitor Pattern Test ###\n" << std::endl;
+  
+  // make the visitor
+  EvolutionVisitor evoVisitor = EvolutionVisitor();
+
+  airMonster.accept(evoVisitor);
+  std::cout << std::endl;
+  landMonster.accept(evoVisitor);
 
   std::cout << "\n=== Starting execute loop ===\n" << std::endl;
 

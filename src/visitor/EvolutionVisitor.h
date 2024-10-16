@@ -7,6 +7,6 @@ public:
   EvolutionVisitor();
   ~EvolutionVisitor();
 
-  void visitLandMonster(LandMonster* m) override;
-  void visitAirMonster(AirMonster* m) override;
+  void visitLandMonster(LandMonster& m) override;
+  void visitAirMonster(AirMonster& m) override;
 };

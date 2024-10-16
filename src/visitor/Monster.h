@@ -23,7 +23,7 @@ public:
   // get attack component
   virtual inline AttackComponent* getAttackComponent() const final { return mAttackComponent; }
 
-  virtual void accept(IVisitor* v) = 0;
+  virtual void accept(IVisitor& v) = 0;
 
   virtual void init() override;                   // runs once at start
   virtual void execute(float deltaTime) override; // runs every frame

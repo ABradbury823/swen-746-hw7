@@ -2,6 +2,7 @@
 #include "composite/HealthComponent.h"
 #include "composite/MoveComponent.h"
 #include "composite/AttackComponent.h"
+#include "visitor/Monster.h"
 
 
 int main()
@@ -10,26 +11,26 @@ int main()
   std::cout << std::endl;
   std::cout << "Hello C++ World from VS Code!" << std::endl;
 
-  // make a game object
-  GameObject go1;
+  // make a monster
+  Monster monster1;
 
   // testing game object
   GameObject go2;
-  go1.add(&go2);
-  go1.remove(&go2);
+  monster1.add(&go2);
+  monster1.remove(&go2);
 
-  // new health component
+  // duplicate health component
   HealthComponent* health = new HealthComponent(10.0);
-  std::cout << "Health: " << health->getHealth() << std::endl;
+  std::cout << "Health: " << monster1.getHealthComponent()->getHealth() << std::endl;
 
-  go1.add(health);
-  go1.add(health);
+  monster1.add(health);
+  monster1.add(health);
 
   // new move component, components can only belong to one GameObject
   MoveComponent* move = new MoveComponent(5.0f);
   std::cout << "Position: " << move->getPosition().toString() << std::endl;
 
-  go1.add(move);
+  monster1.add(move);
   go2.add(move);  // no segmentation fault on delete
 
   // new attack component
@@ -37,17 +38,17 @@ int main()
 
   go2.add(attack);
   go2.add(attack);
-  go1.add(attack);
+  monster1.add(attack);
   go2.remove(attack);
 
   // run methods
-  go1.init();
-  std::cout << "Health: " << health->getHealth() << std::endl;
+  monster1.init();
+  std::cout << "Health: " << monster1.getHealthComponent()->getHealth() << std::endl;
 
   std::cout << "\n=== Starting execute loop ===\n" << std::endl;
 
   for(int i = 0; i < 10; i++){
-    go1.execute(0.1f);
+    monster1.execute(0.1f);
   }
 
   return 0;

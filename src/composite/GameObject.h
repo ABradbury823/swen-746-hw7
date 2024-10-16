@@ -10,16 +10,16 @@ private:
   std::vector<IComponent*> mComponents;
 
 public:
-  ~GameObject();  // dtor
+  virtual ~GameObject();  // dtor
 
-  void add(IComponent* c);    // add component
-  void remove(IComponent* c); // remove component
-  inline std::vector<IComponent*> getComponents() const { return mComponents; }
-  IComponent* getComponentByType(ComponentType type) const;   // Return = GameObject
-  IComponentAccess* getAccess() override { return nullptr; }; // no access on GameObjects
+  virtual void add(IComponent* c) final;    // add component
+  virtual void remove(IComponent* c) final; // remove component
+  virtual inline std::vector<IComponent*> getComponents() const final { return mComponents; }
+  virtual IComponent* getComponentByType(ComponentType type) const final;   // Return = GameObject
+  virtual IComponentAccess* getAccess() final override { return nullptr; }; // no access on GameObjects
 
   virtual void init() override;     // runs on start
   virtual void execute(float deltaTime) override;  // runs every frame
   virtual void tearDown() override;   // runs at end  
-  virtual ComponentType getComponentType() const override;  // gets type = GameObject
+  virtual ComponentType getComponentType() const override final;  // gets type = GameObject
 };

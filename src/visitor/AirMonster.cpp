@@ -10,8 +10,8 @@ AirMonster::~AirMonster() {
 
 }
 
-void AirMonster::accept(IVisitor* v) {
-  v->visitAirMonster(this);
+void AirMonster::accept(IVisitor& v) {
+  v.visitAirMonster(*this);
 }
 
 void AirMonster::fly() {

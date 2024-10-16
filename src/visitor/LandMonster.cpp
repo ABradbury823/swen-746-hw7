@@ -11,7 +11,7 @@ LandMonster::~LandMonster() {
 }
 
 void LandMonster::accept(IVisitor* v) {
-  v->visitLandMonster();
+  v->visitLandMonster(this);
 }
 
 void LandMonster::sprint() {

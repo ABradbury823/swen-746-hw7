@@ -11,7 +11,7 @@ AirMonster::~AirMonster() {
 }
 
 void AirMonster::accept(IVisitor* v) {
-  v->visitAirMonster();
+  v->visitAirMonster(this);
 }
 
 void AirMonster::fly() {

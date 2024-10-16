@@ -4,6 +4,7 @@
 #include "composite/AttackComponent.h"
 #include "visitor/LandMonster.h"
 #include "visitor/AirMonster.h"
+#include "visitor/EvolutionVisitor.h"
 
 
 int main()
@@ -15,6 +16,12 @@ int main()
   // make a monster
   AirMonster airMonster = AirMonster(0.5f, 0.5f);
   LandMonster landMonster = LandMonster(2.0f);
+
+  // make the visitor
+  EvolutionVisitor evoVisitor = EvolutionVisitor();
+
+  airMonster.accept(&evoVisitor);
+  landMonster.accept(&evoVisitor);
 
   // testing duplicate game object
   GameObject go2;
